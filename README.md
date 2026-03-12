@@ -20,6 +20,24 @@
 
 ![体验站首页](./docs/images/web-landing-screenshot.png)
 
+### 抖音式视频流
+
+参考 TikTok / 抖音 UI，全屏上下滑动浏览宠物短视频。支持单击暂停/播放、双击点赞爱心粒子特效、评论面板、分享面板、音乐唱片旋转等完整交互。
+
+<p align="center">
+  <img src="./docs/images/feed-demo-1.png" width="260" alt="视频流 - 金毛" />
+  &nbsp;&nbsp;
+  <img src="./docs/images/feed-demo-2.png" width="260" alt="视频流 - 橘猫" />
+  &nbsp;&nbsp;
+  <img src="./docs/images/feed-demo-comments.png" width="260" alt="视频流 - 评论面板" />
+</p>
+
+桌面端自动显示手机外壳模拟真实设备体验：
+
+![桌面端视频流](./docs/images/feed-demo-desktop.png)
+
+### AI 聊天页
+
 ![AI 聊天页](./docs/images/web-chat-screenshot.png)
 
 ### 体验站架构
@@ -28,6 +46,7 @@
 
 体验站基于 **Next.js 16** 构建，部署于 Vercel，包含：
 - **首页** — 品牌展示、功能演示、技术架构、项目数据
+- **抖音式视频流** — 全屏滑动、双击点赞、评论/分享面板、Ken Burns 动效
 - **AI 宠物匹配师** — GLM-4 驱动的智能宠物顾问，流式对话体验
 
 ## 功能总览
