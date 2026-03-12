@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const features = [
   {
@@ -8,6 +9,7 @@ const features = [
     title: "抖音式视频流",
     description: "全屏上下滑动，沉浸式宠物视频体验。双击点赞，评论互动",
     gradient: "from-[#ff2d55] to-[#ff6b6b]",
+    href: "/demo/feed",
     mockup: (
       <div className="w-full h-full bg-gradient-to-b from-[#1a1a2e] to-[#0a0a0a] rounded-2xl p-3 flex flex-col">
         <div className="flex-1 rounded-xl bg-gradient-to-br from-[#ff2d55]/20 to-transparent flex items-center justify-center">
@@ -33,6 +35,7 @@ const features = [
     title: "Tinder式匹配",
     description: "左滑跳过，右滑喜欢。基于位置的智能匹配，互相喜欢自动配对",
     gradient: "from-[#ff6b6b] to-[#ffa07a]",
+    href: "/demo/matching",
     mockup: (
       <div className="w-full h-full bg-gradient-to-b from-[#1a1a2e] to-[#0a0a0a] rounded-2xl p-3 flex items-center justify-center">
         <div className="relative">
@@ -68,6 +71,7 @@ const features = [
     title: "实时聊天",
     description: "匹配成功即刻开聊。Supabase Realtime 驱动的即时通讯",
     gradient: "from-[#7c3aed] to-[#ff2d55]",
+    href: "/chat",
     mockup: (
       <div className="w-full h-full bg-gradient-to-b from-[#1a1a2e] to-[#0a0a0a] rounded-2xl p-3 flex flex-col justify-end gap-2">
         <div className="flex gap-2 items-end">
@@ -131,25 +135,35 @@ export default function FeatureShowcase() {
               transition={{ duration: 0.7, delay: index * 0.15 }}
               className="group"
             >
-              <div className="relative rounded-3xl border border-white/5 bg-[#111]/80 backdrop-blur-sm p-6 h-full transition-all duration-500 hover:border-[#ff2d55]/20 hover:shadow-[0_0_60px_rgba(255,45,85,0.08)]">
-                {/* Phone mockup */}
-                <div className="w-full aspect-[9/14] mb-6 rounded-2xl border border-white/5 overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]">
-                  {feature.mockup}
-                </div>
+              <Link href={feature.href}>
+                <div className="relative rounded-3xl border border-white/5 bg-[#111]/80 backdrop-blur-sm p-6 h-full transition-all duration-500 hover:border-[#ff2d55]/20 hover:shadow-[0_0_60px_rgba(255,45,85,0.08)]">
+                  {/* Phone mockup */}
+                  <div className="w-full aspect-[9/14] mb-6 rounded-2xl border border-white/5 overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]">
+                    {feature.mockup}
+                  </div>
 
-                {/* Content */}
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-2xl">{feature.icon}</span>
-                  <h3
-                    className={`text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${feature.gradient}`}
-                  >
-                    {feature.title}
-                  </h3>
+                  {/* Content */}
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-2xl">{feature.icon}</span>
+                    <h3
+                      className={`text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${feature.gradient}`}
+                    >
+                      {feature.title}
+                    </h3>
+                  </div>
+                  <p className="text-white/40 text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
+
+                  {/* Try it CTA */}
+                  <div className="mt-4 flex items-center gap-2 text-[#ff2d55] text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span>立即体验</span>
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </div>
                 </div>
-                <p className="text-white/40 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>
