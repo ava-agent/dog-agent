@@ -2,7 +2,7 @@
 
 一款专为宠物设计的社交 App，参考抖音的 UI 风格，核心理念是宠物交友。
 
-**🌐 在线体验**: [web-one-cyan-64.vercel.app](https://web-one-cyan-64.vercel.app) | **📦 源码**: [github.com/ava-agent/dog-agent](https://github.com/ava-agent/dog-agent)
+**🌐 在线体验**: [pet.rxcloud.group](https://pet.rxcloud.group) | **📦 源码**: [github.com/ava-agent/dog-agent](https://github.com/ava-agent/dog-agent)
 
 ## 项目概述
 
