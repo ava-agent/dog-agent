@@ -2,15 +2,33 @@
 
 一款专为宠物设计的社交 App，参考抖音的 UI 风格，核心理念是宠物交友。
 
+**🌐 在线体验**: [web-one-cyan-64.vercel.app](https://web-one-cyan-64.vercel.app) | **📦 源码**: [github.com/ava-agent/dog-agent](https://github.com/ava-agent/dog-agent)
+
 ## 项目概述
 
 | 项目信息 | 详情 |
 |---------|------|
 | **名称** | PawPal 宠友圈 |
 | **版本** | 1.0.0 |
-| **平台** | iOS / Android |
-| **框架** | React Native + Expo SDK 54 |
+| **平台** | iOS / Android / Web (体验站) |
+| **移动端** | React Native + Expo SDK 54 |
+| **体验站** | Next.js 16 + Vercel |
 | **后端** | Supabase |
+| **AI** | 智谱 GLM-4 |
+
+## 在线体验站
+
+![体验站首页](./docs/images/web-landing-screenshot.png)
+
+![AI 聊天页](./docs/images/web-chat-screenshot.png)
+
+### 体验站架构
+
+![部署架构](./docs/images/web-deployment.png)
+
+体验站基于 **Next.js 16** 构建，部署于 Vercel，包含：
+- **首页** — 品牌展示、功能演示、技术架构、项目数据
+- **AI 宠物匹配师** — GLM-4 驱动的智能宠物顾问，流式对话体验
 
 ## 功能总览
 
