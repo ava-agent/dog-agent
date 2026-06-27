@@ -57,7 +57,7 @@ export default function AIEntry() {
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ff2d55]/10 border border-[#ff2d55]/20 mb-3">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#ff2d55] animate-pulse" />
                     <span className="text-xs text-[#ff2d55] font-medium">
-                      GLM-4 驱动
+                      Ark 驱动
                     </span>
                   </div>
                   <h3 className="text-3xl md:text-4xl font-black mb-3">
@@ -69,7 +69,7 @@ export default function AIEntry() {
                   </h3>
                   <p className="text-white/40 text-lg leading-relaxed max-w-xl">
                     描述你的毛孩子，小爪会分析TA的性格特点，推荐最合拍的玩伴。
-                    基于智谱 GLM 大模型，懂宠物、更懂社交。
+                    基于火山引擎 Ark，懂宠物、更懂社交。
                   </p>
                 </div>
 

@@ -17,7 +17,7 @@ export default function Footer() {
           </a>
           <span>React Native + Expo</span>
           <span>Supabase</span>
-          <span>GLM-4</span>
+          <span>Ark</span>
         </div>
         <div className="text-xs text-white/20">
           Built with ❤️ for pets

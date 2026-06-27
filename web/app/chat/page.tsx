@@ -35,7 +35,7 @@ export default function ChatPage() {
               <h1 className="text-sm font-semibold">AI 宠物匹配师 · 小爪</h1>
               <div className="flex items-center gap-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-                <span className="text-xs text-white/30">GLM-4 在线</span>
+                <span className="text-xs text-white/30">Ark 在线</span>
               </div>
             </div>
           </div>
@@ -43,7 +43,7 @@ export default function ChatPage() {
 
         <div className="flex items-center gap-2">
           <span className="text-xs text-white/20 hidden md:block">
-            智谱 GLM-4 驱动
+            火山引擎 Ark 驱动
           </span>
         </div>
       </header>

@@ -1,19 +1,31 @@
-const GLM_API_URL = "https://open.bigmodel.cn/api/paas/v4/chat/completions";
+const DEFAULT_ARK_BASE_URL = "https://ark.cn-beijing.volces.com/api/coding/v3";
+const DEFAULT_ARK_MODEL = "doubao-seed-2-0-code-preview-260215";
 
 export interface ChatMessage {
   role: "system" | "user" | "assistant";
   content: string;
 }
 
-export async function streamGLMChat(messages: ChatMessage[]) {
-  const response = await fetch(GLM_API_URL, {
+function getArkChatCompletionsUrl() {
+  const baseUrl = process.env.ARK_BASE_URL ?? DEFAULT_ARK_BASE_URL;
+  return `${baseUrl.replace(/\/$/, "")}/chat/completions`;
+}
+
+export async function streamArkChat(messages: ChatMessage[]) {
+  const apiKey = process.env.ARK_API_KEY;
+
+  if (!apiKey) {
+    throw new Error("ARK_API_KEY is not configured");
+  }
+
+  const response = await fetch(getArkChatCompletionsUrl(), {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.GLM_API_KEY}`,
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: process.env.GLM_MODEL || "glm-4-flash",
+      model: process.env.ARK_CHAT_MODEL ?? DEFAULT_ARK_MODEL,
       messages,
       stream: true,
       temperature: 0.8,
@@ -22,7 +34,10 @@ export async function streamGLMChat(messages: ChatMessage[]) {
   });
 
   if (!response.ok) {
-    throw new Error(`GLM API error: ${response.status}`);
+    const detail = await response.text().catch(() => "");
+    throw new Error(
+      `Ark API error: ${response.status}${detail ? ` ${detail}` : ""}`
+    );
   }
 
   return response;

@@ -31,7 +31,7 @@ const techLayers = [
   },
   {
     label: "AI",
-    items: [{ name: "GLM-4", desc: "智谱大模型" }],
+    items: [{ name: "Ark", desc: "火山引擎" }],
   },
 ];
 

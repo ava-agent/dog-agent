@@ -1,4 +1,4 @@
-import { streamGLMChat, SYSTEM_PROMPT, type ChatMessage } from "@/lib/glm";
+import { streamArkChat, SYSTEM_PROMPT, type ChatMessage } from "@/lib/ark";
 
 export async function POST(request: Request) {
   try {
@@ -13,10 +13,10 @@ export async function POST(request: Request) {
       ...messages.slice(-20), // Keep last 20 messages for context
     ];
 
-    const glmResponse = await streamGLMChat(fullMessages);
+    const arkResponse = await streamArkChat(fullMessages);
 
-    // Forward the SSE stream from GLM to the client
-    return new Response(glmResponse.body, {
+    // Forward the SSE stream from Ark to the client
+    return new Response(arkResponse.body, {
       headers: {
         "Content-Type": "text/event-stream",
         "Cache-Control": "no-cache",

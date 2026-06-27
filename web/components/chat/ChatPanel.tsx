@@ -86,7 +86,7 @@ export default function ChatPanel() {
         ...prev,
         {
           role: "assistant",
-          content: "抱歉，我暂时无法回应。请检查 GLM API Key 是否已配置。",
+          content: "抱歉，我暂时无法回应。请检查 Ark API Key 是否已配置。",
         },
       ]);
     } finally {
@@ -228,7 +228,7 @@ export default function ChatPanel() {
           </button>
         </form>
         <p className="text-xs text-white/20 mt-2 text-center">
-          由智谱 GLM-4 驱动 · 回复仅供参考
+          由火山引擎 Ark 驱动 · 回复仅供参考
         </p>
       </div>
     </div>

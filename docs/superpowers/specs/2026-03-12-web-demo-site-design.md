@@ -2,7 +2,7 @@
 
 ## 概述
 
-为 PawPal 宠友圈创建 Web 体验站，部署于 Vercel，连接 Supabase 后端，集成 GLM 模型作为 AI 宠物匹配师。
+为 PawPal 宠友圈创建 Web 体验站，部署于 Vercel，连接 Supabase 后端，集成火山引擎 Ark 模型作为 AI 宠物匹配师。
 
 ## 决策记录
 
@@ -22,10 +22,10 @@
 │  Pages:                                 │
 │  /           → Landing + Feature Demo   │
 │  /chat       → AI 宠物匹配师            │
-│  /api/chat   → GLM Proxy (隐藏Key)      │
+│  /api/chat   → Ark Proxy (隐藏Key)      │
 ├─────────────────────────────────────────┤
 │  Supabase Client (读取宠物/视频数据)      │
-│  GLM API (环境变量: GLM_API_KEY)         │
+│  Ark API (环境变量: ARK_API_KEY)         │
 └─────────────────────────────────────────┘
 ```
 
@@ -34,7 +34,7 @@
 - Tailwind CSS 4
 - Framer Motion (动画)
 - Supabase JS Client (复用移动端数据库)
-- GLM API (通过 Next.js API Route 代理)
+- 火山引擎 Ark API (通过 Next.js API Route 代理)
 
 ## 页面结构
 
@@ -57,16 +57,16 @@
 - 右侧: AI 推荐的宠物匹配卡片（从 Supabase 拉取）
 - 功能: 描述你的宠物 → AI 分析性格 → 推荐匹配对象 → 展示宠物卡片
 
-## GLM 集成
+## Ark 集成
 
 ```
-用户输入 → /api/chat → GLM API → 返回流式响应
+用户输入 → /api/chat → Ark API → 返回流式响应
                 ↕
         Supabase (查询宠物数据作为 context)
 ```
 
-- API Route `/api/chat` 代理 GLM 请求
-- Key 存于 `GLM_API_KEY` 环境变量
+- API Route `/api/chat` 代理 Ark 请求
+- Key 存于 `ARK_API_KEY` 环境变量
 - System prompt 设定 AI 为 "PawPal 宠物匹配师" 角色
 - 支持流式输出 (SSE)
 - AI 可调用 Supabase 查询宠物数据，给出基于真实数据的推荐
@@ -79,7 +79,7 @@ web/                              # 体验站 (Next.js)
 │   ├── layout.tsx                # Root layout (dark theme)
 │   ├── page.tsx                  # Landing page
 │   ├── chat/page.tsx             # AI chat page
-│   └── api/chat/route.ts        # GLM proxy API
+│   └── api/chat/route.ts        # Ark proxy API
 ├── components/
 │   ├── landing/                  # Landing page sections
 │   │   ├── Hero.tsx
@@ -94,9 +94,9 @@ web/                              # 体验站 (Next.js)
 │   └── ui/                       # Shared UI
 ├── lib/
 │   ├── supabase.ts               # Supabase client
-│   └── glm.ts                    # GLM API helper
+│   └── ark.ts                    # Ark API helper
 ├── tailwind.config.ts
-├── .env.local                    # GLM_API_KEY, SUPABASE_*
+├── .env.local                    # ARK_API_KEY, SUPABASE_*
 └── package.json
 ```
 
@@ -119,6 +119,7 @@ web/                              # 体验站 (Next.js)
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=xxx
-GLM_API_KEY=xxx           # 服务端专用，不暴露给前端
-GLM_MODEL=glm-4-flash     # GLM 模型名称
+ARK_API_KEY=xxx           # 服务端专用，不暴露给前端
+ARK_BASE_URL=https://ark.cn-beijing.volces.com/api/coding/v3
+ARK_CHAT_MODEL=doubao-seed-2-0-code-preview-260215
 ```
